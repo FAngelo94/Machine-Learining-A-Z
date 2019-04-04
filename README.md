@@ -1,2 +1,2 @@
 # Machine-Learining-A-Z
-Upload Exercises dome in Udemy course
+Upload Exercises done in Udemy course: https://github.com/FAngelo94/Machine-Learining-A-Z.git
