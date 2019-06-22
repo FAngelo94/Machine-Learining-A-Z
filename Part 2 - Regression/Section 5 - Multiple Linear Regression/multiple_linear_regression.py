@@ -39,6 +39,10 @@ X_test = sc_X.transform(X_test)
 sc_y = StandardScaler()
 y_train = sc_y.fit_transform(y_train)"""
 
+'''
+We use the same methods of Linear Regression but we have more columns in X matrix
+'''
+
 # Fitting multiple linear regresssion to the Training Test
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
@@ -47,3 +51,14 @@ regressor.fit(X_train, y_train)
 
 # Prediction the Test set results
 y_pred = regressor.predict(X_test)
+
+# Building the optimal model using backward elimination
+import statsmodels.formula.api as sm
+X = np.append(arr = np.ones((50,1)).astype(int), values = X, axis = 1) # in this way we add the constant in our formula (b0)
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+X_opt = X[:, [0, 3, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+print(regressor_OLS.pvalues)
